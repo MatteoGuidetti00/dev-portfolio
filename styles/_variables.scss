@@ -1,0 +1,29 @@
+$dark-theme: true !default;
+
+@media (prefers-color-scheme: dark) {
+  $dark-theme: true;
+}
+
+@media (prefers-color-scheme: light) {
+  $dark-theme: false;
+}
+
+$fireflies: 15;
+$border-radius: 12px;
+$font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+$base-color: rgb(0, 0, 0);
+$primary-color: rgb(58, 16, 120);
+$background-default-color: rgb(16 12 28);
+$background-lighter-color: rgb(255, 255, 255);
+$background-darker-color: 255, 255, 255;
+
+@if $dark-theme {
+  $base-color: rgb(255, 255, 255);
+  $primary-color: rgb(71, 119, 255);
+  $background-default-color: rgb(16 12 28);
+  $background-lighter-color: rgba(24, 18, 43, 1);
+  $background-darker-color: 0, 0, 0;
+}

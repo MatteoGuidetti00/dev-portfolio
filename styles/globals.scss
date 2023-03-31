@@ -1,0 +1,35 @@
+@use "variables" as v;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 300vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: v.$base-color;
+  background: v.$background-default-color;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@if v.$dark-theme {
+  html {
+    color-scheme: dark;
+  }
+}
