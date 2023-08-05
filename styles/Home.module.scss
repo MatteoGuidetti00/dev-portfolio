@@ -53,19 +53,6 @@
     .presentation-bottom {
       grid-column: 2;
       justify-self: flex-start;
-
-      .social-icons {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-
-        svg {
-          width: 48px;
-          height: 48px;
-          cursor: pointer;
-          transition: fill 0.4s ease;
-        }
-      }
     }
 
     .title {
@@ -79,6 +66,21 @@
       color: v.$primary-color;
       margin-top: 1.25rem;
       font-family: v.$font-mono;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 2rem;
+      margin-bottom: 1.25rem;
+
+      svg {
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        transition: fill 0.4s ease;
+      }
     }
 
     .avatar-image {
