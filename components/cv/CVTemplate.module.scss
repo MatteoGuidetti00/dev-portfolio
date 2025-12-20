@@ -1,0 +1,162 @@
+$primary: #4777ff;
+$text-dark: #1a1a1a;
+$text-medium: #444444;
+$text-light: #666666;
+
+.cv {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 15mm 20mm;
+  background: white;
+  color: $text-dark;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 8mm;
+  padding-bottom: 6mm;
+  border-bottom: 2px solid $primary;
+}
+
+.name {
+  font-size: 24pt;
+  font-weight: 700;
+  color: $text-dark;
+  margin: 0 0 2mm;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: 14pt;
+  font-weight: 500;
+  color: $primary;
+  margin: 0 0 4mm;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3mm 6mm;
+  font-size: 9pt;
+  color: $text-medium;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+
+    &:not(:last-child)::after {
+      content: "|";
+      margin-left: 6mm;
+      color: #ccc;
+    }
+  }
+}
+
+.section {
+  margin-bottom: 6mm;
+}
+
+.sectionTitle {
+  font-size: 12pt;
+  font-weight: 700;
+  color: $primary;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 3mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1px solid rgba($primary, 0.3);
+}
+
+.summary {
+  margin: 0;
+  color: $text-medium;
+  text-align: justify;
+}
+
+.entry {
+  margin-bottom: 4mm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.entryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1mm;
+}
+
+.entryTitle {
+  font-size: 11pt;
+  font-weight: 600;
+  color: $text-dark;
+  margin: 0;
+}
+
+.entrySubtitle {
+  font-size: 10pt;
+  color: $text-medium;
+  margin: 0;
+}
+
+.period {
+  font-size: 9pt;
+  color: $primary;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.description {
+  margin: 1mm 0 0;
+  color: $text-light;
+  font-size: 9.5pt;
+}
+
+.tech {
+  margin: 1mm 0 0;
+  font-size: 9pt;
+  color: $text-medium;
+
+  strong {
+    color: $text-dark;
+  }
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+}
+
+.skillCategory {
+  font-size: 9.5pt;
+  color: $text-medium;
+
+  strong {
+    color: $primary;
+    font-weight: 600;
+  }
+}
+
+@media print {
+  .cv {
+    padding: 10mm 15mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .section {
+    break-inside: avoid;
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+}

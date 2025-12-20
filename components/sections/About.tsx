@@ -1,9 +1,15 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import SectionTitle from "@/components/common/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import styles from "./About.module.scss";
+
+const CVPreviewModal = dynamic(
+  () => import("@/components/cv/CVPreviewModal"),
+  { ssr: false }
+);
 
 const poppins = Poppins({
   weight: ["400", "500", "600"],
@@ -11,6 +17,7 @@ const poppins = Poppins({
 });
 
 const About: FC = () => {
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const { ref: imageRef, isVisible: imageVisible } =
     useScrollAnimation<HTMLDivElement>();
   const { ref: textRef, isVisible: textVisible } =
@@ -70,11 +77,18 @@ const About: FC = () => {
               <div className={styles.statLabel}>Technologies</div>
             </div>
           </div>
-          <a href="/cv.pdf" download className={styles.button}>
+          <button
+            className={styles.button}
+            onClick={() => setIsCVModalOpen(true)}
+          >
             Download CV
-          </a>
+          </button>
         </div>
       </div>
+      <CVPreviewModal
+        isOpen={isCVModalOpen}
+        onClose={() => setIsCVModalOpen(false)}
+      />
     </section>
   );
 };

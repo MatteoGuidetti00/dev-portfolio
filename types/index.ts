@@ -1,3 +1,16 @@
+// Profile types
+export interface Profile {
+  name: string;
+  title: string;
+  email: string;
+  phone?: string;
+  location: string;
+  linkedin: string;
+  github: string;
+  website?: string;
+  summary: string;
+}
+
 // Skills types
 export interface Skill {
   name: string;
