@@ -1,0 +1,91 @@
+@use "variables" as v;
+
+.nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(16, 12, 28, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 0;
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+
+  @media (max-width: 700px) {
+    display: block;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Active state
+.active {
+  color: v.$primary-color;
+
+  .icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 8px rgba(v.$primary-color, 0.5));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .icon {
+    transition: none;
+  }
+
+  .link:active {
+    transform: none;
+  }
+
+  .active .icon {
+    transform: none;
+  }
+}

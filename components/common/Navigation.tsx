@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import styles from "./Navigation.module.scss";
 
-const navigation = ["home", "about", "skills", "projects", "contacts"];
+const navigation = ["home", "about", "skills", "experience", "projects", "contacts"];
 
 const Navigation: FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);

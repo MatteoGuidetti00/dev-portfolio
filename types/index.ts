@@ -10,6 +10,24 @@ export interface SkillCategory {
   skills: Skill[];
 }
 
+// Experience types
+export interface WorkExperience {
+  id: string;
+  company: string;
+  position: string;
+  period: string;
+  description: string;
+  technologies?: string[];
+}
+
+export interface Education {
+  id: string;
+  school: string;
+  degree: string;
+  period: string;
+  description?: string;
+}
+
 // Projects types
 export interface Project {
   id: string;

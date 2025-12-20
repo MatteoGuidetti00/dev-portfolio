@@ -15,15 +15,7 @@
   }
 
   @include m.mobile {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0.75rem 0;
-    background: rgba(16, 12, 28, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
   }
 }
 
@@ -35,11 +27,6 @@
   background: linear-gradient(90deg, v.$primary-color, lighten(v.$primary-color, 15%));
   transition: width 0.1s linear;
   z-index: 101;
-
-  @include m.mobile {
-    top: auto;
-    bottom: 100%;
-  }
 }
 
 .list {
@@ -52,10 +39,6 @@
     justify-content: center;
     gap: 1.5rem;
   }
-
-  @include m.mobile {
-    justify-content: space-around;
-  }
 }
 
 .item {
@@ -64,7 +47,7 @@
   justify-content: center;
   @include a.entrance-animation(fadeInDown, v.$transition-slow, 0.1s);
 
-  @for $i from 1 through 5 {
+  @for $i from 1 through 6 {
     &:nth-child(#{$i}) {
       animation-delay: #{0.1 + ($i * 0.1)}s;
     }
@@ -78,21 +61,11 @@
     height: 0.2rem;
     background: #ffffff;
     opacity: 0;
-
-    @include m.mobile {
-      display: none;
-    }
   }
 
   @include m.tablet {
     width: auto;
     padding: 0 0.75rem;
-  }
-
-  @include m.mobile {
-    width: auto;
-    flex-direction: column;
-    align-items: center;
   }
 }
 
@@ -102,21 +75,10 @@
   transition:
     gap v.$transition-normal v.$ease-default,
     opacity v.$transition-normal v.$ease-default;
-
-  @include m.mobile {
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.7rem;
-    gap: 0.15rem;
-  }
 }
 
 .slash {
   color: v.$primary-color;
-
-  @include m.mobile {
-    display: none;
-  }
 }
 
 .label {

@@ -1,10 +1,12 @@
 import Head from "next/head";
 import Navigation from "@/components/common/Navigation";
+import MobileNav from "@/components/common/MobileNav";
 import BackToTop from "@/components/common/BackToTop";
 import Footer from "@/components/common/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
+import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import Contacts from "@/components/sections/Contacts";
 import styles from "@/styles/Home.module.scss";
@@ -55,11 +57,13 @@ export default function Home() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
         <Projects />
         <Contacts />
       </main>
       <Footer />
       <BackToTop />
+      <MobileNav />
     </>
   );
 }
