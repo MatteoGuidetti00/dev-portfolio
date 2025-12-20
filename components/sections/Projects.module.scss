@@ -1,0 +1,27 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.projects {
+  @include m.section-container;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+// Stagger animation delays for cards
+@for $i from 1 through 6 {
+  .grid > :nth-child(#{$i}) {
+    transition-delay: #{($i - 1) * 0.1}s;
+  }
+}

@@ -1,0 +1,215 @@
+@use "variables" as v;
+
+// Responsive breakpoint mixins
+@mixin mobile {
+  @media (max-width: v.$breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: calc(v.$breakpoint-mobile + 1px)) and (max-width: v.$breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: calc(v.$breakpoint-tablet + 1px)) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: calc(v.$breakpoint-mobile + 1px)) {
+    @content;
+  }
+}
+
+// Hover only on non-touch devices
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Glass morphism card effect
+@mixin glass-card {
+  background: rgba(24, 18, 43, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: v.$border-radius;
+}
+
+// Section container
+@mixin section-container {
+  min-height: 100vh;
+  padding: v.$section-padding-desktop;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @include tablet {
+    padding: v.$section-padding-tablet;
+  }
+
+  @include mobile {
+    padding: v.$section-padding-mobile;
+    min-height: auto;
+  }
+}
+
+// Responsive grid
+@mixin responsive-grid($min-width: 300px, $gap: 2rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+  width: 100%;
+}
+
+// Hover glow effect
+@mixin hover-glow($color: v.$primary-color) {
+  transition:
+    box-shadow v.$transition-normal v.$ease-out-quart,
+    transform v.$transition-normal v.$ease-out-quart;
+
+  @include hover {
+    box-shadow: 0 0 30px rgba($color, 0.3);
+    transform: translateY(-4px);
+  }
+}
+
+// Card lift effect
+@mixin card-lift {
+  transition: transform v.$transition-normal v.$ease-out-quart;
+
+  @include hover {
+    transform: translateY(-8px);
+  }
+}
+
+// Form input styling
+@mixin form-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: v.$border-radius;
+  padding: 1rem;
+  color: v.$base-color;
+  font-family: v.$font-global;
+  font-size: 1rem;
+  transition:
+    border-color v.$transition-fast v.$ease-default,
+    box-shadow v.$transition-fast v.$ease-default;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: v.$primary-color;
+    box-shadow: 0 0 0 4px rgba(v.$primary-color, 0.15);
+  }
+}
+
+// Button base
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: v.$border-radius;
+  font-family: v.$font-global;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition:
+    transform v.$transition-fast v.$ease-out-quart,
+    box-shadow v.$transition-fast v.$ease-default,
+    background v.$transition-fast v.$ease-default;
+
+  @include hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Primary button
+@mixin button-primary {
+  @include button-base;
+  background: v.$primary-color;
+  color: white;
+
+  @include hover {
+    box-shadow: 0 10px 30px rgba(v.$primary-color, 0.4);
+  }
+}
+
+// Outline button
+@mixin button-outline {
+  @include button-base;
+  background: transparent;
+  border: 2px solid v.$primary-color;
+  color: v.$primary-color;
+
+  @include hover {
+    background: v.$primary-color;
+    color: white;
+  }
+}
+
+// Section title styling
+@mixin section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  text-align: center;
+
+  span {
+    color: v.$primary-color;
+    font-family: v.$font-mono;
+  }
+
+  @include mobile {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+}
+
+// Reveal animation base
+@mixin reveal-base {
+  opacity: 0;
+  transform: translateY(v.$reveal-distance);
+  transition:
+    opacity v.$transition-slow v.$ease-out-quart,
+    transform v.$transition-slow v.$ease-out-quart;
+
+  // Use :global() to prevent CSS Modules from hashing the class name
+  &:global(.is-visible) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

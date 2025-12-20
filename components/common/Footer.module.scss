@@ -1,0 +1,57 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.footer {
+  width: 100%;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(16, 12, 28, 0.5);
+
+  @include m.mobile {
+    padding: 2rem 1.5rem 6rem;
+  }
+}
+
+.content {
+  text-align: center;
+}
+
+.copyright {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.accent {
+  color: v.$primary-color;
+  font-family: v.$font-mono;
+}
+
+.year {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color v.$transition-fast v.$ease-default;
+
+  @include m.hover {
+    color: v.$primary-color;
+  }
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.3);
+}

@@ -7,9 +7,17 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
 html,
 body {
-  max-width: 300vw;
+  max-width: 100vw;
   overflow-x: hidden;
 }
 
@@ -17,6 +25,7 @@ body {
   color: v.$base-color;
   background: v.$background-default-color;
   font-family: v.$font-global;
+  line-height: 1.6;
 
   &::-webkit-scrollbar {
     display: none;
@@ -28,6 +37,12 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+// Selection styling
+::selection {
+  background: rgba(v.$primary-color, 0.3);
+  color: v.$base-color;
 }
 
 @if v.$dark-theme {

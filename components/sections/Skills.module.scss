@@ -1,0 +1,145 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.skills {
+  @include m.section-container;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1000px;
+
+  @include m.mobile {
+    gap: 2.5rem;
+  }
+}
+
+.category {
+  @include m.reveal-base;
+}
+
+.categoryTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: v.$primary-color;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  @include m.mobile {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+
+  @include m.tablet {
+    gap: 1.5rem;
+  }
+
+  @include m.mobile {
+    gap: 1.25rem;
+  }
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform v.$transition-normal v.$ease-out-quart;
+
+  @include m.hover {
+    transform: translateY(-4px);
+
+    .iconWrapper {
+      box-shadow: 0 8px 32px rgba(v.$primary-color, 0.3);
+      border-color: v.$primary-color;
+    }
+
+    .icon {
+      transform: scale(1.1);
+    }
+  }
+
+  @include m.mobile {
+    gap: 0.5rem;
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    box-shadow v.$transition-normal v.$ease-default,
+    border-color v.$transition-normal v.$ease-default,
+    background v.$transition-normal v.$ease-default;
+
+  @include m.tablet {
+    width: 70px;
+    height: 70px;
+  }
+
+  @include m.mobile {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: transform v.$transition-normal v.$ease-out-quart;
+
+  @include m.tablet {
+    width: 40px;
+    height: 40px;
+  }
+
+  @include m.mobile {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-family: v.$font-mono;
+
+  @include m.mobile {
+    font-size: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .badge,
+  .iconWrapper,
+  .icon {
+    transition: none;
+  }
+}

@@ -1,0 +1,61 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: v.$primary-color;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition:
+    opacity v.$transition-normal v.$ease-out-quart,
+    visibility v.$transition-normal v.$ease-out-quart,
+    transform v.$transition-normal v.$ease-out-quart,
+    background v.$transition-fast v.$ease-default;
+  z-index: 99;
+  box-shadow: 0 4px 20px rgba(v.$primary-color, 0.4);
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+  }
+
+  @include m.hover {
+    background: lighten(v.$primary-color, 10%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(v.$primary-color, 0.5);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include m.mobile {
+    bottom: 5rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
