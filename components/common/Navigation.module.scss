@@ -43,7 +43,7 @@
 
 .item {
   display: flex;
-  width: 7rem;
+  width: 8.5rem;
   justify-content: center;
   @include a.entrance-animation(fadeInDown, v.$transition-slow, 0.1s);
 
@@ -61,6 +61,7 @@
     height: 0.2rem;
     background: #ffffff;
     opacity: 0;
+    flex-shrink: 0;
   }
 
   @include m.tablet {
