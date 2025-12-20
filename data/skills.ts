@@ -40,6 +40,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Jest", icon: devicon("jest", "plain") },
       { name: "Cypress", icon: devicon("cypressio"), invertIcon: true },
       { name: "Playwright", icon: devicon("playwright") },
+      { name: "JUnit", icon: devicon("junit", "plain") },
     ],
   },
   {
@@ -48,6 +49,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker", icon: devicon("docker") },
       { name: "AWS", icon: devicon("amazonwebservices", "plain-wordmark") },
       { name: "Git", icon: devicon("git") },
+      { name: "Jenkins", icon: devicon("jenkins") },
     ],
   },
 ];
