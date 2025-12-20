@@ -22,7 +22,7 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#100c1c" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
         {/* Open Graph / Social Media */}
         <meta property="og:type" content="website" />

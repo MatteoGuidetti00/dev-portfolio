@@ -43,7 +43,7 @@ const Skills: FC = () => {
                         alt={skill.name}
                         width={48}
                         height={48}
-                        className={styles.icon}
+                        className={`${styles.icon} ${skill.invertIcon ? styles.invertIcon : ""}`}
                       />
                     )}
                   </div>

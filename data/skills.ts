@@ -38,7 +38,7 @@ export const skillCategories: SkillCategory[] = [
     name: "Testing",
     skills: [
       { name: "Jest", icon: devicon("jest", "plain") },
-      { name: "Cypress", icon: devicon("cypressio") },
+      { name: "Cypress", icon: devicon("cypressio"), invertIcon: true },
       { name: "Playwright", icon: devicon("playwright") },
     ],
   },

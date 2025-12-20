@@ -2,6 +2,7 @@
 export interface Skill {
   name: string;
   icon?: string;
+  invertIcon?: boolean;
 }
 
 export interface SkillCategory {
