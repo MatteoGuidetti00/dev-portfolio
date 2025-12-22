@@ -43,6 +43,8 @@ export interface Education {
 }
 
 // Projects types
+export type ProjectType = "personal" | "professional";
+
 export interface Project {
   id: string;
   title: string;
@@ -51,7 +53,11 @@ export interface Project {
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
+  appStoreUrl?: string;
+  playStoreUrl?: string;
   featured?: boolean;
+  projectType: ProjectType;
+  company?: string; // For professional projects - links to work experience
 }
 
 // Contact form types

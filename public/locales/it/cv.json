@@ -1,0 +1,23 @@
+{
+  "modal": {
+    "title": "Anteprima CV",
+    "close": "Chiudi",
+    "download": "Scarica PDF",
+    "generating": "Generazione..."
+  },
+  "template": {
+    "contact": "Contatti",
+    "softSkills": "Soft Skills",
+    "summary": "Profilo",
+    "workExperience": "Esperienza Lavorativa",
+    "technicalSkills": "Competenze Tecniche",
+    "education": "Formazione"
+  },
+  "softSkillsList": [
+    "Precisione e organizzazione metodica del lavoro",
+    "Pazienza e concentrazione nella risoluzione dei problemi",
+    "Ottime capacità di lavoro in team",
+    "Eccellenti doti comunicative",
+    "Passione per l'apprendimento continuo"
+  ]
+}

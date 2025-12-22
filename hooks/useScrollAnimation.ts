@@ -8,7 +8,7 @@ interface UseScrollAnimationOptions {
 }
 
 interface UseScrollAnimationReturn<T extends HTMLElement> {
-  ref: RefObject<T>;
+  ref: RefObject<T | null>;
   isVisible: boolean;
 }
 

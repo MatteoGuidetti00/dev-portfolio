@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "home": "home",
+    "about": "io",
+    "skills": "competenze",
+    "experience": "esperienza",
+    "projects": "progetti",
+    "contacts": "contatti"
+  },
+  "footer": {
+    "builtWith": "Realizzato con passione da Matteo Guidetti",
+    "rights": "Tutti i diritti riservati."
+  }
+}

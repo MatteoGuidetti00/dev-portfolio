@@ -1,0 +1,12 @@
+{
+  "sectionTitle": "about",
+  "paragraph1": "I'm a passionate <highlight>Full-Stack Developer</highlight> based in Italy, driven by a love for crafting clean, efficient, and user-focused digital experiences.",
+  "paragraph2": "With experience spanning both <highlight>frontend</highlight> and <highlight>backend</highlight> technologies, I enjoy tackling complex challenges and transforming ideas into functional, elegant solutions.",
+  "paragraph3": "When I'm not coding, you'll find me exploring new frameworks, contributing to open-source projects, or sharing knowledge with the developer community.",
+  "stats": {
+    "years": "Years Experience",
+    "projects": "Projects Completed",
+    "technologies": "Technologies"
+  },
+  "downloadCV": "Download CV"
+}

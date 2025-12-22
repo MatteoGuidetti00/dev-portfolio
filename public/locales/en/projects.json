@@ -1,0 +1,12 @@
+{
+  "sectionTitle": "projects",
+  "viewGithub": "GitHub",
+  "viewDemo": "Live Demo",
+  "viewAppStore": "App Store",
+  "viewPlayStore": "Play Store",
+  "projectType": {
+    "personal": "Personal Project",
+    "professional": "Professional Work"
+  },
+  "workedAt": "at"
+}

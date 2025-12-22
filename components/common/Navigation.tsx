@@ -1,9 +1,11 @@
 import { FC, useState, useEffect } from "react";
+import { useTranslation } from "next-i18next";
 import styles from "./Navigation.module.scss";
 
-const navigation = ["home", "about", "skills", "experience", "projects", "contacts"];
+const navigationKeys = ["home", "about", "skills", "experience", "projects", "contacts"];
 
 const Navigation: FC = () => {
+  const { t } = useTranslation("common");
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -25,11 +27,11 @@ const Navigation: FC = () => {
         style={{ width: `${scrollProgress}%` }}
       />
       <ul className={styles.list}>
-        {navigation.map((link, index) => (
+        {navigationKeys.map((key, index) => (
           <li key={index} className={styles.item}>
-            <a href={`#${link}`} className={styles.link}>
+            <a href={`#${key}`} className={styles.link}>
               <span className={styles.slash}>/</span>
-              <span className={styles.label}>{link}</span>
+              <span className={styles.label}>{t(`nav.${key}`)}</span>
             </a>
           </li>
         ))}

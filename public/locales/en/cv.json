@@ -1,0 +1,23 @@
+{
+  "modal": {
+    "title": "CV Preview",
+    "close": "Close",
+    "download": "Download PDF",
+    "generating": "Generating..."
+  },
+  "template": {
+    "contact": "Contact",
+    "softSkills": "Soft Skills",
+    "summary": "Summary",
+    "workExperience": "Work Experience",
+    "technicalSkills": "Technical Skills",
+    "education": "Education"
+  },
+  "softSkillsList": [
+    "Precision and methodical work organization",
+    "Patience and focus in problem-solving",
+    "Strong teamwork abilities",
+    "Excellent communication skills",
+    "Passion for continuous learning"
+  ]
+}

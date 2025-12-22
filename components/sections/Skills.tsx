@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import SectionTitle from "@/components/common/SectionTitle";
@@ -12,13 +13,14 @@ const poppins = Poppins({
 });
 
 const Skills: FC = () => {
+  const { t } = useTranslation("skills");
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({
     threshold: 0.1,
   });
 
   return (
     <section id="skills" className={styles.skills}>
-      <SectionTitle>skills</SectionTitle>
+      <SectionTitle>{t("sectionTitle")}</SectionTitle>
       <div ref={ref} className={styles.container}>
         {skillCategories.map((category, categoryIndex) => (
           <div
@@ -27,7 +29,7 @@ const Skills: FC = () => {
             style={{ transitionDelay: `${categoryIndex * 0.1}s` }}
           >
             <h3 className={`${styles.categoryTitle} ${poppins.className}`}>
-              {category.name}
+              {t(`categories.${category.name}`)}
             </h3>
             <div className={styles.badges}>
               {category.skills.map((skill, skillIndex) => (

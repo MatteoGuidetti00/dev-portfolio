@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useTranslation, Trans } from "next-i18next";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
@@ -17,6 +18,7 @@ const poppins = Poppins({
 });
 
 const About: FC = () => {
+  const { t } = useTranslation("about");
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const { ref: imageRef, isVisible: imageVisible } =
     useScrollAnimation<HTMLDivElement>();
@@ -25,7 +27,7 @@ const About: FC = () => {
 
   return (
     <section id="about" className={`${styles.about} ${poppins.className}`}>
-      <SectionTitle>about</SectionTitle>
+      <SectionTitle>{t("sectionTitle")}</SectionTitle>
       <div className={styles.content}>
         <div
           ref={imageRef}
@@ -33,7 +35,7 @@ const About: FC = () => {
         >
           <Image
             className={styles.image}
-            src="https://i.ibb.co/jZ7g4Jb/goku-learning-react-2-transformed.jpg"
+            src="/images/me.jpeg"
             alt="Matteo Guidetti"
             width={280}
             height={280}
@@ -45,43 +47,41 @@ const About: FC = () => {
           className={`${styles.textContent} ${textVisible ? "is-visible" : ""}`}
         >
           <p className={styles.bio}>
-            I&apos;m a passionate{" "}
-            <span className={styles.highlight}>Full-Stack Developer</span> based
-            in Italy, with a strong focus on creating elegant, performant, and
-            user-centric web applications.
+            <Trans
+              i18nKey="paragraph1"
+              ns="about"
+              components={{ highlight: <span className={styles.highlight} /> }}
+            />
           </p>
           <p className={styles.bio}>
-            With experience spanning both{" "}
-            <span className={styles.highlight}>frontend</span> and{" "}
-            <span className={styles.highlight}>backend</span> technologies, I
-            love turning complex problems into simple, beautiful solutions. I
-            believe in writing clean, maintainable code and staying curious
-            about emerging technologies.
+            <Trans
+              i18nKey="paragraph2"
+              ns="about"
+              components={{ highlight: <span className={styles.highlight} /> }}
+            />
           </p>
           <p className={styles.bio}>
-            When I&apos;m not coding, you&apos;ll find me exploring new
-            frameworks, contributing to open-source projects, or experimenting
-            with creative animations and UI patterns.
+            {t("paragraph3")}
           </p>
           <div className={styles.stats}>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>3+</div>
-              <div className={styles.statLabel}>Years Experience</div>
-            </div>
-            <div className={styles.stat}>
-              <div className={styles.statNumber}>20+</div>
-              <div className={styles.statLabel}>Projects Completed</div>
+              <div className={styles.statNumber}>5+</div>
+              <div className={styles.statLabel}>{t("stats.years")}</div>
             </div>
             <div className={styles.stat}>
               <div className={styles.statNumber}>10+</div>
-              <div className={styles.statLabel}>Technologies</div>
+              <div className={styles.statLabel}>{t("stats.projects")}</div>
+            </div>
+            <div className={styles.stat}>
+              <div className={styles.statNumber}>20+</div>
+              <div className={styles.statLabel}>{t("stats.technologies")}</div>
             </div>
           </div>
           <button
             className={styles.button}
             onClick={() => setIsCVModalOpen(true)}
           >
-            Download CV
+            {t("downloadCV")}
           </button>
         </div>
       </div>

@@ -1,0 +1,22 @@
+{
+  "sectionTitle": "contatti",
+  "form": {
+    "nameLabel": "Nome",
+    "namePlaceholder": "Il tuo nome",
+    "emailLabel": "Email",
+    "emailPlaceholder": "tua.email@esempio.com",
+    "messageLabel": "Messaggio",
+    "messagePlaceholder": "Il tuo messaggio...",
+    "submitButton": "Invia Messaggio",
+    "submitting": "Invio in corso...",
+    "successMessage": "Messaggio inviato con successo! Ti risponderò al più presto.",
+    "errorMessage": "Invio fallito. Riprova o scrivimi direttamente via email."
+  },
+  "social": {
+    "title": "Connettiti con me",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "Email",
+    "location": "Posizione"
+  }
+}

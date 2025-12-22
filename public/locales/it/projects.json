@@ -1,0 +1,12 @@
+{
+  "sectionTitle": "progetti",
+  "viewGithub": "GitHub",
+  "viewDemo": "Demo Live",
+  "viewAppStore": "App Store",
+  "viewPlayStore": "Play Store",
+  "projectType": {
+    "personal": "Progetto Personale",
+    "professional": "Lavoro Professionale"
+  },
+  "workedAt": "presso"
+}

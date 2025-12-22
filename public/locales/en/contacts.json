@@ -1,0 +1,22 @@
+{
+  "sectionTitle": "contacts",
+  "form": {
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your.email@example.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Your message...",
+    "submitButton": "Send Message",
+    "submitting": "Sending...",
+    "successMessage": "Message sent successfully! I'll get back to you soon.",
+    "errorMessage": "Failed to send message. Please try again or email me directly."
+  },
+  "social": {
+    "title": "Connect With Me",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "Email",
+    "location": "Location"
+  }
+}

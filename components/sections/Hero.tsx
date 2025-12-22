@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import styles from "./Hero.module.scss";
@@ -9,6 +10,8 @@ const poppins = Poppins({
 });
 
 const Hero: FC = () => {
+  const { t } = useTranslation("hero");
+
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.presentation}>
@@ -26,17 +29,17 @@ const Hero: FC = () => {
         </div>
         <div className={styles.content}>
           <h1 className={`${styles.title} ${poppins.className}`}>
-            Hello!
+            {t("greeting")}
           </h1>
           <h2 className={`${styles.title} ${styles.titleSecond} ${poppins.className}`}>
-            This is Matteo.
+            {t("introduction")}
           </h2>
           <p className={`${styles.subtitle} ${poppins.className}`}>
-            Full-Stack Developer
+            {t("title")}
           </p>
           <div className={styles.socialIcons}>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/matteo-guidetti-dev"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
@@ -51,7 +54,7 @@ const Hero: FC = () => {
               </svg>
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/MatteoGuidetti00"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}

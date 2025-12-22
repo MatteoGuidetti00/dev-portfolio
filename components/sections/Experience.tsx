@@ -1,8 +1,10 @@
 import { FC } from "react";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import { Poppins } from "next/font/google";
 import SectionTitle from "@/components/common/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { workExperience, education } from "@/data/experience";
+import { getWorkExperience, getEducation } from "@/data/experience";
 import styles from "./Experience.module.scss";
 
 const poppins = Poppins({
@@ -11,18 +13,22 @@ const poppins = Poppins({
 });
 
 const Experience: FC = () => {
+  const { t } = useTranslation("experience");
+  const { locale } = useRouter();
+  const workExperience = getWorkExperience(locale || "en");
+  const education = getEducation(locale || "en");
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({
     threshold: 0.1,
   });
 
   return (
     <section id="experience" className={styles.experience}>
-      <SectionTitle>experience</SectionTitle>
+      <SectionTitle>{t("sectionTitle")}</SectionTitle>
       <div ref={ref} className={styles.container}>
         {/* Work Experience */}
         <div className={styles.subsection}>
           <h3 className={`${styles.subsectionTitle} ${poppins.className}`}>
-            Work Experience
+            {t("workExperience")}
           </h3>
           <div className={styles.timeline}>
             {workExperience.map((job, index) => (
@@ -57,7 +63,7 @@ const Experience: FC = () => {
         {/* Education */}
         <div className={styles.subsection}>
           <h3 className={`${styles.subsectionTitle} ${poppins.className}`}>
-            Education
+            {t("education")}
           </h3>
           <div className={styles.timeline}>
             {education.map((edu, index) => (

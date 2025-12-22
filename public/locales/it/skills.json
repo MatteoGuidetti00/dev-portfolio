@@ -1,0 +1,10 @@
+{
+  "sectionTitle": "competenze",
+  "categories": {
+    "Frontend": "Frontend",
+    "Backend": "Backend",
+    "Database": "Database",
+    "Testing": "Testing",
+    "DevOps": "DevOps"
+  }
+}

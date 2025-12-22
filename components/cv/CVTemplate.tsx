@@ -1,8 +1,13 @@
 import { forwardRef } from "react";
-import { profile } from "@/data/profile";
-import { workExperience, education } from "@/data/experience";
+import { useTranslation } from "next-i18next";
+import { getProfile } from "@/data/profile";
+import { getWorkExperience, getEducation } from "@/data/experience";
 import { skillCategories } from "@/data/skills";
 import styles from "./CVTemplate.module.scss";
+
+interface CVTemplateProps {
+  locale: string;
+}
 
 // SVG Icons
 const LocationIcon = () => (
@@ -35,7 +40,13 @@ const GitHubIcon = () => (
   </svg>
 );
 
-const CVTemplate = forwardRef<HTMLDivElement>((_, ref) => {
+const CVTemplate = forwardRef<HTMLDivElement, CVTemplateProps>(({ locale }, ref) => {
+  const { t } = useTranslation("cv");
+  const profile = getProfile(locale);
+  const workExperience = getWorkExperience(locale);
+  const education = getEducation(locale);
+  const softSkillsList = t("softSkillsList", { returnObjects: true }) as string[];
+
   return (
     <div ref={ref} className={styles.cv}>
       {/* Sidebar */}
@@ -43,7 +54,7 @@ const CVTemplate = forwardRef<HTMLDivElement>((_, ref) => {
         {/* Photo */}
         <div className={styles.photoWrapper}>
           <img
-            src="https://i.ibb.co/jZ7g4Jb/goku-learning-react-2-transformed.jpg"
+            src="/images/me.jpeg"
             alt={profile.name}
             className={styles.photo}
           />
@@ -51,7 +62,7 @@ const CVTemplate = forwardRef<HTMLDivElement>((_, ref) => {
 
         {/* Contacts */}
         <section className={styles.sidebarSection}>
-          <h2 className={styles.sidebarTitle}>Contact</h2>
+          <h2 className={styles.sidebarTitle}>{t("template.contact")}</h2>
           <div className={styles.contactItem}>
             <LocationIcon />
             <span>{profile.location}</span>
@@ -78,13 +89,11 @@ const CVTemplate = forwardRef<HTMLDivElement>((_, ref) => {
 
         {/* Soft Skills */}
         <section className={styles.sidebarSection}>
-          <h2 className={styles.sidebarTitle}>Soft Skills</h2>
+          <h2 className={styles.sidebarTitle}>{t("template.softSkills")}</h2>
           <ul className={styles.softSkills}>
-            <li>Precision and methodical work organization</li>
-            <li>Patience and focus in problem-solving</li>
-            <li>Strong teamwork abilities</li>
-            <li>Excellent communication skills</li>
-            <li>Passion for continuous learning</li>
+            {softSkillsList.map((skill, index) => (
+              <li key={index}>{skill}</li>
+            ))}
           </ul>
         </section>
       </aside>
@@ -100,13 +109,13 @@ const CVTemplate = forwardRef<HTMLDivElement>((_, ref) => {
 
         {/* Summary */}
         <section className={styles.mainSection}>
-          <h2 className={styles.sectionTitle}>Summary</h2>
+          <h2 className={styles.sectionTitle}>{t("template.summary")}</h2>
           <p className={styles.summary}>{profile.summary}</p>
         </section>
 
         {/* Work Experience */}
         <section className={styles.mainSection}>
-          <h2 className={styles.sectionTitle}>Work Experience</h2>
+          <h2 className={styles.sectionTitle}>{t("template.workExperience")}</h2>
           {workExperience.map((job) => (
             <div key={job.id} className={styles.entry}>
               <div className={styles.entryHeader}>
@@ -126,7 +135,7 @@ const CVTemplate = forwardRef<HTMLDivElement>((_, ref) => {
 
         {/* Technical Skills */}
         <section className={styles.mainSection}>
-          <h2 className={styles.sectionTitle}>Technical Skills</h2>
+          <h2 className={styles.sectionTitle}>{t("template.technicalSkills")}</h2>
           <div className={styles.skillsGrid}>
             {skillCategories.map((category) => (
               <div key={category.name} className={styles.skillRow}>
@@ -141,7 +150,7 @@ const CVTemplate = forwardRef<HTMLDivElement>((_, ref) => {
 
         {/* Education */}
         <section className={styles.mainSection}>
-          <h2 className={styles.sectionTitle}>Education</h2>
+          <h2 className={styles.sectionTitle}>{t("template.education")}</h2>
           {education.map((edu) => (
             <div key={edu.id} className={styles.entry}>
               <div className={styles.entryHeader}>

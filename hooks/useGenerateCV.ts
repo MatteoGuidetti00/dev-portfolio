@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
-import { profile } from "@/data/profile";
+import { getProfile } from "@/data/profile";
 
-export const useGenerateCV = () => {
+export const useGenerateCV = (locale: string = "en") => {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const generatePDF = useCallback(async (element: HTMLElement) => {
@@ -9,7 +9,7 @@ export const useGenerateCV = () => {
 
     try {
       const html2pdf = (await import("html2pdf.js")).default;
-
+      const profile = getProfile(locale);
       const filename = `${profile.name.replace(/\s+/g, "_")}_CV.pdf`;
 
       const opt = {
@@ -35,7 +35,7 @@ export const useGenerateCV = () => {
     } finally {
       setIsGenerating(false);
     }
-  }, []);
+  }, [locale]);
 
   return { generatePDF, isGenerating };
 };

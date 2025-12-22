@@ -1,15 +1,11 @@
-import { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
+import { useTranslation } from "next-i18next";
 import styles from "./MobileNav.module.scss";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-const navigation = [
-  { name: "home", label: "Home" },
-  { name: "about", label: "About" },
-  { name: "skills", label: "Skills" },
-  { name: "experience", label: "Exp" },
-  { name: "projects", label: "Projects" },
-];
+const navigationKeys = ["home", "about", "skills", "experience", "projects"];
 
-const icons: Record<string, JSX.Element> = {
+const icons: Record<string, React.ReactElement> = {
   home: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -47,18 +43,17 @@ const icons: Record<string, JSX.Element> = {
 };
 
 const MobileNav: FC = () => {
+  const { t } = useTranslation("common");
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const sections = navigation.map((nav) => nav.name);
-
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
+      for (let i = navigationKeys.length - 1; i >= 0; i--) {
+        const section = document.getElementById(navigationKeys[i]);
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
+          setActiveSection(navigationKeys[i]);
           break;
         }
       }
@@ -71,21 +66,24 @@ const MobileNav: FC = () => {
   }, []);
 
   return (
-    <nav className={styles.nav}>
-      <ul className={styles.list}>
-        {navigation.map((item) => (
-          <li key={item.name} className={styles.item}>
-            <a
-              href={`#${item.name}`}
-              className={`${styles.link} ${activeSection === item.name ? styles.active : ""}`}
-              aria-label={item.label}
-            >
-              <span className={styles.icon}>{icons[item.name]}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <LanguageSwitcher variant="mobile" />
+      <nav className={styles.nav}>
+        <ul className={styles.list}>
+          {navigationKeys.map((key) => (
+            <li key={key} className={styles.item}>
+              <a
+                href={`#${key}`}
+                className={`${styles.link} ${activeSection === key ? styles.active : ""}`}
+                aria-label={t(`nav.${key}`)}
+              >
+                <span className={styles.icon}>{icons[key]}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };
 

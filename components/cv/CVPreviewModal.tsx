@@ -1,6 +1,8 @@
 "use client";
 
 import { FC, useRef, useEffect } from "react";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import CVTemplate from "./CVTemplate";
 import { useGenerateCV } from "@/hooks/useGenerateCV";
 import styles from "./CVPreviewModal.module.scss";
@@ -11,8 +13,10 @@ interface CVPreviewModalProps {
 }
 
 const CVPreviewModal: FC<CVPreviewModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation("cv");
+  const { locale } = useRouter();
   const cvRef = useRef<HTMLDivElement>(null);
-  const { generatePDF, isGenerating } = useGenerateCV();
+  const { generatePDF, isGenerating } = useGenerateCV(locale || "en");
 
   useEffect(() => {
     if (isOpen) {
@@ -60,11 +64,11 @@ const CVPreviewModal: FC<CVPreviewModalProps> = ({ isOpen, onClose }) => {
     <div className={styles.backdrop} onClick={handleBackdropClick}>
       <div className={styles.modal}>
         <div className={styles.header}>
-          <h2 className={styles.title}>CV Preview</h2>
+          <h2 className={styles.title}>{t("modal.title")}</h2>
           <button
             className={styles.closeButton}
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t("modal.close")}
           >
             <svg
               width="24"
@@ -84,20 +88,20 @@ const CVPreviewModal: FC<CVPreviewModalProps> = ({ isOpen, onClose }) => {
 
         <div className={styles.preview}>
           <div className={styles.cvWrapper}>
-            <CVTemplate ref={cvRef} />
+            <CVTemplate ref={cvRef} locale={locale || "en"} />
           </div>
         </div>
 
         <div className={styles.footer}>
           <button className={styles.cancelButton} onClick={onClose}>
-            Close
+            {t("modal.close")}
           </button>
           <button
             className={styles.downloadButton}
             onClick={handleDownload}
             disabled={isGenerating}
           >
-            {isGenerating ? "Generating..." : "Download PDF"}
+            {isGenerating ? t("modal.generating") : t("modal.download")}
           </button>
         </div>
       </div>
