@@ -8,7 +8,7 @@ export const profile: Profile = {
   location: "Italy",
   linkedin: "linkedin.com/in/matteo-guidetti-dev",
   github: "github.com/MatteoGuidetti00",
-  website: "matteoguidetti.dev",
+  website: "matteo-guidetti.vercel.app",
   summary:
     "Passionate Full-Stack Developer based in Italy, with 5+ years of experience creating elegant, performant, and user-centric web applications. Skilled in both frontend and backend technologies, with a strong focus on clean, maintainable code and modern development practices.",
 };
