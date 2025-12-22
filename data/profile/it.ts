@@ -5,7 +5,7 @@ export const profile: Profile = {
   title: "Full-Stack Developer",
   email: "matteo.guidetti2000@gmail.com",
   phone: "+39 334 3701 833",
-  location: "Italia",
+  location: "Ravenna, Italia",
   linkedin: "linkedin.com/in/matteo-guidetti-dev",
   github: "github.com/MatteoGuidetti00",
   website: "matteo-guidetti.vercel.app",

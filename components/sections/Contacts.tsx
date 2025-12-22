@@ -1,8 +1,10 @@
 import { FC, useState, FormEvent } from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import { Poppins } from "next/font/google";
 import SectionTitle from "@/components/common/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { getProfile } from "@/data/profile";
 import { FormStatus } from "@/types";
 import styles from "./Contacts.module.scss";
 
@@ -13,6 +15,8 @@ const poppins = Poppins({
 
 const Contacts: FC = () => {
   const { t } = useTranslation("contacts");
+  const { locale } = useRouter();
+  const profile = getProfile(locale || "en");
   const [status, setStatus] = useState<FormStatus>("idle");
   const { ref: formRef, isVisible: formVisible } =
     useScrollAnimation<HTMLDivElement>();
@@ -197,7 +201,7 @@ const Contacts: FC = () => {
             </svg>
             <div className={styles.socialInfo}>
               <span className={styles.socialLabel}>{t("social.location")}</span>
-              <span className={styles.socialValue}>Italy</span>
+              <span className={styles.socialValue}>{profile.location}</span>
             </div>
           </div>
         </div>
