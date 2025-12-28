@@ -10,6 +10,7 @@
   min-height: calc(100vh - 8rem);
   padding: 2rem;
   width: 100%;
+  position: relative;
 
   @include m.mobile {
     min-height: calc(100vh - 6rem);

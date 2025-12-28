@@ -1,0 +1,260 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+// Only show on mobile
+.container {
+  display: none;
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  left: 1.5rem;
+  z-index: 1000;
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  transition: opacity 0.4s v.$ease-out-expo, transform 0.4s v.$ease-out-expo;
+  pointer-events: none;
+
+  @include m.mobile {
+    display: block;
+  }
+
+  &.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+}
+
+// Backdrop overlay - rendered via portal to body
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 12, 28, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: all 0.4s v.$ease-out-expo;
+  pointer-events: none;
+  z-index: 999; // Below container (1000) but above other content
+
+  &.backdropVisible {
+    background: rgba(16, 12, 28, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: auto;
+  }
+}
+
+// Floating Action Button
+.fab {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: v.$primary-color;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(v.$primary-color, 0.4);
+  transition: transform 0.3s v.$ease-out-expo;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid v.$primary-color;
+    outline-offset: 4px;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.fabInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fabIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.fabLine {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+  transition: all 0.3s v.$ease-out-expo;
+
+  &:nth-child(1) {
+    width: 18px;
+  }
+
+  &:nth-child(2) {
+    width: 14px;
+  }
+
+  &:nth-child(3) {
+    width: 10px;
+  }
+
+  .fabOpen & {
+    &:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      width: 20px;
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    &:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      width: 20px;
+    }
+  }
+}
+
+// Glow effect - hidden for cleaner look
+.fabGlow {
+  display: none;
+}
+
+// Ring effect - hidden for cleaner look
+.fabRing {
+  display: none;
+}
+
+// Navigation menu
+.menu {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+// Menu items
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(24, 18, 43, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  transform: translateX(-20px) scale(0.8);
+  transition: all 0.3s v.$ease-out-expo;
+  transition-delay: 0s;
+  pointer-events: none;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  &:active {
+    transform: scale(0.96);
+    background: rgba(71, 119, 255, 0.2);
+  }
+
+  &.active {
+    color: v.$primary-color;
+    border-color: rgba(71, 119, 255, 0.3);
+    background: rgba(71, 119, 255, 0.1);
+
+    svg {
+      filter: drop-shadow(0 0 8px rgba(71, 119, 255, 0.5));
+    }
+  }
+
+  .menuOpen & {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+    // Staggered animation based on index
+    transition-delay: calc(var(--index) * 0.05s);
+  }
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: v.$font-global;
+  white-space: nowrap;
+}
+
+// Language switcher in menu
+.langSwitcher {
+  opacity: 0;
+  transform: translateX(-20px) scale(0.8);
+  transition: all 0.3s v.$ease-out-expo;
+  transition-delay: 0s;
+  pointer-events: none;
+  margin-bottom: 4px;
+
+  &.langSwitcherVisible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+    transition-delay: calc(6 * 0.05s); // After all nav items
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    transition: opacity 0.1s;
+    transform: none;
+
+    &.visible {
+      transform: none;
+    }
+  }
+
+  .fabGlow {
+    animation: none;
+  }
+
+  .menuItem {
+    transition: opacity 0.1s;
+    transform: none;
+
+    .menuOpen & {
+      transform: none;
+      transition-delay: 0s;
+    }
+  }
+
+  .backdrop {
+    transition: none;
+  }
+
+  .fabLine,
+  .fabRing,
+  .fabInner {
+    transition: none;
+  }
+}

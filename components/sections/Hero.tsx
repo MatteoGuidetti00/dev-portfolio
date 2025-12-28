@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
+import ScrollIndicator from "@/components/common/ScrollIndicator";
 import styles from "./Hero.module.scss";
 
 const poppins = Poppins({
@@ -71,6 +72,7 @@ const Hero: FC = () => {
           </div>
         </div>
       </div>
+      <ScrollIndicator />
     </section>
   );
 };

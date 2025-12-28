@@ -11,6 +11,29 @@
   border-radius: 20px;
   padding: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+
+  // Mobile variant - no container bar, individual button backgrounds
+  &.mobile {
+    padding: 0 !important;
+    gap: 6px !important;
+    background: none !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    .button {
+      background: rgba(24, 18, 43, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      &.active {
+        background: v.$primary-color;
+        border-color: v.$primary-color;
+      }
+    }
+  }
 }
 
 .button {
@@ -49,15 +72,11 @@
   }
 }
 
-// Mobile variant - bottom right, above BackToTop
+// Mobile variant - inside FAB menu
 .mobile {
   display: none;
 
   @include m.mobile {
     display: flex;
-    position: fixed;
-    bottom: 10.5rem;
-    right: 1rem;
-    z-index: 9999;
   }
 }

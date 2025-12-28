@@ -3,7 +3,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 import Navigation from "@/components/common/Navigation";
-import MobileNav from "@/components/common/MobileNav";
+import MobileNavFab from "@/components/common/MobileNavFab";
 import BackToTop from "@/components/common/BackToTop";
 import Footer from "@/components/common/Footer";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
@@ -58,7 +58,7 @@ export default function Home() {
       </main>
       <Footer />
       <BackToTop />
-      <MobileNav />
+      <MobileNavFab />
     </>
   );
 }

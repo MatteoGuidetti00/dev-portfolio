@@ -42,8 +42,8 @@
   }
 
   @include m.mobile {
-    bottom: 6.5rem;
-    right: 1rem;
+    bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    right: 1.5rem;
     width: 44px;
     height: 44px;
 
